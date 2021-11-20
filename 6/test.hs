@@ -6,7 +6,7 @@ main :: IO ()
 main = do
     a <- getLine
     print a
-    putStrLn "You said " ++ a ++" - why?"
+    putStrLn $ "You said " ++ a ++" - why?"
     b <- getLine
-    putStrLn "Ah, thank you for your explanation."
+    putStrLn $ "Ah, thank you for your explanation."
 

@@ -1,7 +1,7 @@
 
 data TisAnInteger = TisAn Integer
 
-instance Eq (TisAnInteger) where
+instance Eq TisAnInteger where -- brackets not necessary when only one argument (type)
     (==) (TisAn x) (TisAn x') = x == x'
 
 
