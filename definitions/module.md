@@ -12,3 +12,4 @@ import Database.Persist
 --     ^ the module Database.Persist
 ```
 In the above example, we are importing the function encode declared in the module Data.Aeson along with any typeclass instances. With the module Database.Persist we are importing everything it makes available.
+

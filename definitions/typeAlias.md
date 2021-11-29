@@ -5,3 +5,4 @@ type Name = String
 -- type String *not* a data declaration,
 -- just a type alias declaration
 ```
+

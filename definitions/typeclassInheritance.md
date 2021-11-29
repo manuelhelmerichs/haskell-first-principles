@@ -25,3 +25,4 @@ No instance for (Num Nada)
     'Fractional Nada'
 ```
 You need a Num instance first. Can't write one that makes sense? Then you're not allowed to have a Fractional instance either. Them's the rules.
+

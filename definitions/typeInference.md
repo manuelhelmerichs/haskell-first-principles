@@ -18,3 +18,4 @@ Integer
 -- The principal type is
 -- (Ord a, Num a) => a
 ```
+

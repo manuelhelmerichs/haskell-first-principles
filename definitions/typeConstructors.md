@@ -4,3 +4,4 @@ type Name = String
 data Pet = Cat | Dog Name
 ```
 In the above example, Pet is the type constructor. A guideline for differentiating the two kinds of constructors is that type constructors always go to the left of the = in a data declaration.
+

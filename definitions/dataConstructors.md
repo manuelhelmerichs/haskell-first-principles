@@ -10,3 +10,4 @@ Cat :: pet
 :t Dog
 Dog :: Name -> Pet
 ```
+
