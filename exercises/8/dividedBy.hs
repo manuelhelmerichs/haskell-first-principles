@@ -47,10 +47,10 @@ dividedBy' num denom
 dividedBy'' :: Int -> Int -> Maybe Int
 dividedBy'' num denom
   | denom == 0 = Nothing
-  | signum num == signum denom = quotient
-  | otherwise = fmap negate quotient
+  | signum num == signum denom = quotient -- without fmap: Just quotient
+  | otherwise = fmap negate quotient -- without fmap: Just (negate quotient)
   where quotient = go (abs num) (abs denom) 0
-        go :: Int -> Int -> Int -> Maybe Int
+        go :: Int -> Int -> Int -> Maybe Int -- withoug fmap: return Int
         go n d count
           | n < d Just count
           | otherwise = go (n - d) d (count + 1)
