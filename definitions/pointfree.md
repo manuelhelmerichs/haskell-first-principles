@@ -12,3 +12,14 @@ reverseMkTuple = flip (,)
 reverseTuple = uncurry (flip (,))
 ```
 
+### how to transform into point free style
+The trick is to always transform things into prefix form, and then do a eta elimination. Each line in the following is one step of the transformation:
+f a b c = (a+b) * c 
+f a b c = (*) (a+b) c  -- prefix form of (*)
+f a b = (*) (a+b)      -- eliminate c
+f a b = (*) ((+) a b)  -- prefix form of (+)
+f a b = (*) $ (+) a b  -- replace parens with dollar
+f a = (*) . (+) a      -- elminate b
+f a = (.) (*) ((+) a)  -- prefix form of (.)
+f a = (.) (*) $ (+) a  -- replace parens with dollar
+f = (.) (*) . (+)      -- eliminate a

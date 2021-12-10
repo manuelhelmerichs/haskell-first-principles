@@ -1,3 +1,4 @@
+
 module Cipher where
 
 import Data.Char
@@ -33,4 +34,11 @@ shiftLeftLower a b = chr $ (((ord b - ord 'a') - a) `mod` 26) + ord 'a'
 
 shiftLeftUpper :: Int -> Char -> Char
 shiftLeftUpper a b = chr $ (((ord b - ord 'A') - a) `mod` 26) + ord 'A'
+
+shiftLeftLower' :: Int -> Char -> Char
+shiftLeftLower' = shiftRightLower . negate
+
+shiftLeftUpper' :: Int -> Char -> Char
+shiftLeftUpper' = shiftRightUpper . negate
+
 
