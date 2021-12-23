@@ -37,10 +37,24 @@ myFoldl f acc (x:xs) = myFoldl f (f acc x) xs
 -- use scanr and scanl to see how folds evaluate!
 scanFoldr = foldr (+) 0 [1..5] == head (scanr (+) 0 [1..5])
 scanFoldl = foldl (+) 0 [1..5] == last (scanl (+) 0 [1..5])
+
 -- both folds arrive at the same result, but from different orders
+-- they do however traverse the spine in the same direction:
 -- (1 + 2) + 3 == 1 + (2 + 3)
 
 -- summary
 -- use foldr for infinite lists and when not needing to traverse the whole list
 -- foldl is faster otherwise (when traversing whole list): tail recursive
+
+-- but, be careful with substituting:
+carful = foldr (^) 2 [1..3] == 1
+carful' = foldl (^) 2 [1..3] == 64
+
+careful2 = foldr (:) [] [1..3]
+careful2' = foldl (flip (:)) [] [1..3]
+
+-- foldr (flip const) 0 [1..5] will always return 0
+-- foldr const 0 [1..5] will always return 1
+-- foldl const 0 [1..5] will always return 0
+-- foldl (flip const) 0 [1..5] will always return 5
 
