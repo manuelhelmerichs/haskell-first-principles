@@ -58,3 +58,13 @@ careful2' = foldl (flip (:)) [] [1..3]
 -- foldl const 0 [1..5] will always return 0
 -- foldl (flip const) 0 [1..5] will always return 5
 
+-- xs = [1..5] ++ undefined
+-- foldr const 0 xs == 1
+-- foldr (flip const) 0 xs == bottom
+-- foldl const 0 xs == bottom
+-- foldl (flip const) 0 xs == bottom
+-- foldl unconditionally evaluates the spine!
+-- thus, foldl is generally inappropriate with lists that are or could be infinite
+
+-- also, use foldl' (foldl prime) when needing a left fold
+
