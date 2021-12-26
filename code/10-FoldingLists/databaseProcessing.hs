@@ -1,3 +1,4 @@
+import Control.Applicative
 import Data.Time
 
 data DatabaseItem = DbString String
@@ -44,6 +45,12 @@ avgDb x = fromIntegral (sumDb x) / fromIntegral (length (filterDbNumber x))
 -- more pointfree, not sure if one could remove the x aswell
 avgDb' :: [DatabaseItem] -> Double
 avgDb' x = (/) (integralSum x) (integralLength x)
+  where integralSum = fromIntegral . sumDb
+        integralLength = fromIntegral . length . filterDbNumber
+
+-- it is possible, using liftA2 from Control.Applicative
+avgDb'' :: [DatabaseItem] -> Double
+avgDb'' = liftA2 (/) integralSum integralLength
   where integralSum = fromIntegral . sumDb
         integralLength = fromIntegral . length . filterDbNumber
 
