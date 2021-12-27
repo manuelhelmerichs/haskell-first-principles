@@ -138,5 +138,6 @@ myMinimumBy _ (x:[]) = x
 myMinimumBy f (x:xs) = if (f x $ myMinimumBy f xs) == LT then x else myMinimumBy f xs
 
 myMinimumBy' :: Ord a => (a -> a -> Ordering) -> [a] -> a
-myMinimumBy' f xs = foldr helper (minimum xs) xs
+myMinimumBy' f xs = foldr helper (maximum xs) xs
   where helper a b = if (f a b) == LT then a else b
+
