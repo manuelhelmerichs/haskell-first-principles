@@ -1,0 +1,2 @@
+A fold is a higher-order function, which, given a function to accumulate the results and a recursive data structure, returns the build up value. Usually a "start value" for the accumulation is provided along with a function that can combine the type of values in the data structure with the accumulation. The term fold is typically used with reference to collections of values referenced by a recursive datatype. For a generalization of "breaking down structure", see [[catamorphism]].
+
