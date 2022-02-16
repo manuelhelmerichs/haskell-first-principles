@@ -19,3 +19,8 @@ foldl f z (x:xs) = foldl f (f z x) xs
 ```
 Tail recursive. `foldl` invokes itself recursively. The combining function is only an argument to the recursive fold.
 
+
+## Other sources
+Tail recursion can be optimized to while(true), tail recursion means the recursive call is the last thing that get's evaluated.
+Thus, it uses constant memory.
+
