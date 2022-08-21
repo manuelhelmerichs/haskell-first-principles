@@ -9,6 +9,7 @@ data BookType = FictionBook Fiction
 type AuthorName = String
 
 data Author0 = Author (AuthorName, BookType) -- not in normal form
+-- because Booktype can be evaluated to Fiction / Nonfiction
 data Author1 = Fiction AuthorName | Nonfiction AuthorName deriving (Eq, Show) -- in normal form
 
 data Expr =
