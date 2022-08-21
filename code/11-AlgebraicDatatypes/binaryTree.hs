@@ -22,20 +22,17 @@ mapExpected = Node (Node Leaf 4 Leaf) 2 (Node Leaf 5 Leaf)
 mapOkay = if mapTree (+1) testTree == mapExpected then print "yup okay!" else error "test failed!"
 
 
-squish' :: [[a]] -> [a]
-squish' = foldr (\x y -> x ++ y) []
-
-
 preorder :: BinaryTree a -> [a]
-preorder = undefined
--- preorder Leaf = []
--- preorder (Node left a right) = a : (squish' (preorder left)) : (squish' (preorder right)
+preorder Leaf = []
+preorder (Node left a right) = [a] ++ (preorder left) ++ (preorder right)
 
 inorder :: BinaryTree a -> [a]
-inorder = undefined
+inorder Leaf = []
+inorder (Node left a right) = (inorder left) ++ [a] ++ (inorder right)
 
 postorder :: BinaryTree a -> [a]
-postorder = undefined
+postorder Leaf = []
+postorder (Node left a right) = (postorder left) ++ (postorder right) ++ [a]
 
 testTree' :: BinaryTree Integer
 testTree' = Node (Node Leaf 1 Leaf) 2 (Node Leaf 3 Leaf)
@@ -55,7 +52,11 @@ main = do
   testInorder
   testPostorder
 
+foldTree :: (a -> b -> b) -> b -> BinaryTree a -> b
+foldTree f a t = foldr f a (inorder t)
+
 t1 = insertValue 1 Leaf
+t1PlusOne = foldTree (+) 1 t1
 t2 = insertValue 3 t1
 -- data types are immutable! t2 is a new tree
 t3 = insertValue 4 t2
