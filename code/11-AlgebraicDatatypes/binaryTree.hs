@@ -52,11 +52,11 @@ main = do
   testInorder
   testPostorder
 
-foldTree :: (a -> b -> b) -> b -> BinaryTree a -> b
-foldTree f a t = foldr f a (inorder t)
+foldrTree :: (a -> b -> b) -> b -> BinaryTree a -> b
+foldrTree f a t = foldr f a (inorder t)
 
 t1 = insertValue 1 Leaf
-t1PlusOne = foldTree (+) 1 t1
+t1PlusOne = foldrTree (+) 1 t1
 t2 = insertValue 3 t1
 -- data types are immutable! t2 is a new tree
 t3 = insertValue 4 t2

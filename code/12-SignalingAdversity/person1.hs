@@ -47,5 +47,3 @@ eP2 = mkPerson' "" 5
 eP3 = mkPerson' "bry" (-2)
 eP4 = mkPerson' "" (-2) -- here, only the first error
 
-
-

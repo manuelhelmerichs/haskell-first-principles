@@ -13,12 +13,16 @@ class TooMany a where
 instance TooMany Int where
   tooMany n = n > 42
 
+
 instance TooMany (Int, String) where
-  tooMany (a, _) = a > 2
+  tooMany (n, _) = tooMany n
+--   tooMany (a, _) = a > 2
 
 instance TooMany (Int, Int) where
-  tooMany (a, b) = (a + b) > 84
+  tooMany (n, m) = (tooMany n) && (tooMany m)
+--   tooMany (a, b) = (a + b) > 84
 
 instance (Num a, TooMany a) => TooMany (a, a) where -- notice how to add constraints
   tooMany :: (Num a, TooMany a) => (a, a) -> Bool
   tooMany (x, y) = tooMany x || tooMany y
+
